@@ -1,4 +1,4 @@
-import { Site } from "@/models"
+import { Site } from "@models"
 import axios, { AxiosInstance } from "axios"
 
 export class Sites {
