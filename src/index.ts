@@ -1,8 +1,11 @@
 import { ConfigurationOptions } from "./dtos/ConfigurationOptions.dto";
 import { base64encode } from 'nodejs-base64'
+import { Inbound } from "./lib";
 export default class ThinQ {
   private accountId: string
   private encodedToken: string
+
+  public inbound: Inbound
 
   constructor (options: ConfigurationOptions) {
     this.accountId = options.accountId
@@ -16,6 +19,7 @@ export default class ThinQ {
       throw error
     }
 
-    console.log(`ThinQ Account: ${this.accountId}, ThinQ Token: ${this.encodedToken}`)
+    // Initialize classes
+    this.inbound = new Inbound(this.accountId, this.encodedToken)
   }
 }

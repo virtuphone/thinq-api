@@ -20,6 +20,7 @@
     "typescript": "^4.3.5"
   },
   "dependencies": {
+    "axios": "^0.21.1",
     "nodejs-base64": "^2.0.0"
   }
 }
