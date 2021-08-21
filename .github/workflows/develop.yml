@@ -47,6 +47,6 @@ jobs:
         git commit -a -m $"Build ${CURRENT_VERSION}" -m "[skip ci]"
         git push --set-upstream origin develop
     - name: Publish Beta
-      run: npm publish --tag beta
+      run: npm publish --tag beta --access public
 
 
