@@ -48,5 +48,10 @@ jobs:
         git push --set-upstream origin develop
     - name: Publish Beta
       run: npm publish --tag beta --access public
+    - run: npm config set //npm.pkg.github.com/:_authToken=$NPM_TOKEN -g
+      env:
+        NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Publish Beta to github
+      run: npm publish --tag beta --access public --registry=https://npm.pkg.github.com
 
 
