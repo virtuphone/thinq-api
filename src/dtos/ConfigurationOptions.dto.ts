@@ -1,5 +1,5 @@
 export interface ConfigurationOptions {
-  accountId: number
+  accountId: string
   username?: string
   token?: string
   encodedToken?: string
