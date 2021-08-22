@@ -57,3 +57,5 @@ export class Site {
     })
   }
 }
+
+export default Site
