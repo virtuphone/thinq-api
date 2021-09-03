@@ -11,7 +11,7 @@ export class Sites {
     this.encodedToken = encodedToken
 
     this.api = axios.create({
-      baseURL: `https://api.thinq.com/accounts/${this.accountId}/location`,
+      baseURL: `https://api.thinq.com/account/${this.accountId}/location`,
       headers: {
         Authorization: `Basic ${encodedToken}`
       }
