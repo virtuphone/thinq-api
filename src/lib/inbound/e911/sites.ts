@@ -16,12 +16,16 @@ export class Sites {
   }
 
   public async get (siteId: string | number): Promise<Site> {
-    const response = await this.api.get(`/${siteId}`);
+    try {
+      const response = await this.api.get(`/${siteId}`);
 
-    if (!response || !response.data) {
-      const error = new Error('Invalid Site')
-      throw error
+      if (!response || !response.data) {
+        const error = new Error('Invalid Site')
+        throw error
+      }
+      return Site.fromJson(response.data)
+    } catch (err) {
+      throw err
     }
-    return Site.fromJson(response.data)
   }
 }
