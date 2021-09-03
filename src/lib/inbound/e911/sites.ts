@@ -1,5 +1,5 @@
 import axios, { AxiosInstance } from "axios"
-import Site from "src/models/Site.model"
+import Site from "../../../models/Site.model"
 
 export class Sites {
   private accountId: string
