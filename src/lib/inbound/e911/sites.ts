@@ -19,10 +19,6 @@ export class Sites {
     try {
       const response = await this.api.get(`/${siteId}`);
 
-      if (!response || !response.data) {
-        const error = new Error('Invalid Site')
-        throw error
-      }
       return Site.fromJson(response.data)
     } catch (err) {
       throw err
