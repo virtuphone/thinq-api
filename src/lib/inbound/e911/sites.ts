@@ -11,14 +11,15 @@ export class Sites {
     this.encodedToken = encodedToken
 
     this.api = axios.create({
-      baseURL: `https://api.thinq.com/accounts/${this.accountId}/location`
+      baseURL: `https://api.thinq.com`
     })
   }
 
   public async get (siteId: string | number): Promise<Site> {
     try {
-      const response = await this.api.get(`/${siteId}`);
-
+      console.log('get')
+      const response = await this.api.get(`/accounts/${this.accountId}/location/${siteId}`);
+      console.log(response)
       return Site.fromJson(response.data)
     } catch (err) {
       throw err
