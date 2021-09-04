@@ -1,32 +1,82 @@
 import axios, { AxiosInstance } from "axios"
-import Site from "../../../classes/site.class"
+import Location from "../../../classes/location.class"
 
 export class Sites {
-  private accountId: string
-  private encodedToken: string
-  private api: AxiosInstance
+  private _accountId: string
+  private _encodedToken: string
+  private _api: AxiosInstance
 
   constructor (accountId: string, encodedToken: string) {
-    this.accountId = accountId
-    this.encodedToken = encodedToken
+    this._accountId = accountId
+    this._encodedToken = encodedToken
 
-    this.api = axios.create({
-      baseURL: `https://api.thinq.com/account/${this.accountId}/location`,
+    this._api = axios.create({
+      baseURL: `https://api.thinq.com/account/${this._accountId}/location`,
       headers: {
         Authorization: `Basic ${encodedToken}`
       }
     })
   }
 
-  public async get (siteId: string | number): Promise<Site> {
+  public async create (location: Location): Promise<Location> {
     try {
-      const response = await this.api.get(`/${siteId}`);
+      const newSite = {
+        account_id: this._accountId,
+        location,
+      }
+      const response = await this._api.post(`/`, newSite);
 
       if (!response || !response.data) {
         const error = new Error('Invalid Site')
         throw error
       }
-      return Site.fromJson(response.data)
+      return Location.fromJson(response.data)
+    } catch (err) {
+      throw err
+    }
+  }
+
+  public async delete (id: string | number): Promise<void> {
+    try {
+      const response = await this._api.delete(`/${id}`);
+
+      if (!response || !response.data) {
+        const error = new Error('Invalid Site')
+        throw error
+      }
+    } catch (err) {
+      throw err
+    }
+  }
+
+  public async get (id: string | number): Promise<Location> {
+    try {
+      const response = await this._api.get(`/${id}`);
+
+      if (!response || !response.data) {
+        const error = new Error('Invalid Site')
+        throw error
+      }
+      return Location.fromJson(response.data)
+    } catch (err) {
+      throw err
+    }
+  }
+
+  public async update (id: string | number, location: Location): Promise<Location> {
+    try {
+      const siteUpdate = {
+        account_id: this._accountId,
+        location_id: id,
+        location,
+      }
+      const response = await this._api.put(`/${id}`, siteUpdate);
+
+      if (!response || !response.data) {
+        const error = new Error('Invalid Site')
+        throw error
+      }
+      return Location.fromJson(response.data)
     } catch (err) {
       throw err
     }
