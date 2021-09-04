@@ -1,9 +1,9 @@
 export class Location {
-  id: number
+  id?: number
   location_type: 'business' | 'residential'
   alias: string
   address: string
-  address2: string
+  address2: string | null
   city: string
   state: string
   zip: string
