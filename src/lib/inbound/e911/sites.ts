@@ -39,11 +39,6 @@ export class Sites {
   public async delete (id: string | number): Promise<void> {
     try {
       const response = await this._api.delete(`/${id}`);
-
-      if (!response || !response.data) {
-        const error = new Error('Invalid Site')
-        throw error
-      }
     } catch (err) {
       throw err
     }
