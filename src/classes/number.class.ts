@@ -12,6 +12,7 @@ export class Number {
       focDate,
       ported,
       provisioned,
+      status,
     }: Number) {
       this.id = id
       this.didSummary = didSummary
