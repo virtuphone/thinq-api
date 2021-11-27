@@ -1,6 +1,10 @@
 import axios, { AxiosInstance } from "axios"
 import Number from "../../../classes/number.class"
 
+export interface SearchParams {
+    page: number | string
+    rows: number | string
+}
 export class ExistingDids {
   private _accountId: string
   private _encodedToken: string
@@ -18,7 +22,9 @@ export class ExistingDids {
     })
   }
 
-  public async getAll ({ page = 1, rows = 100 }): Promise<Number[]> {
+  public async getAll (params: SearchParams | null): Promise<Number[]> {
+    const { page = 1, rows = 100 } = params || {}
+    
     try {
       const response = await this._api.get(`?page=${page}&rows=${rows}`);
 
