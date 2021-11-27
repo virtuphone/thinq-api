@@ -23,3 +23,5 @@ export default class ThinQ {
     this.inbound = new Inbound(this.accountId, this.encodedToken)
   }
 }
+
+export * from './classes'
