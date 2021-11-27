@@ -24,4 +24,4 @@ export default class ThinQ {
   }
 }
 
-export * from './classes'
+export * as ThinQTypes from './classes'
