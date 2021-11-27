@@ -22,9 +22,9 @@ export class ExistingDids {
     })
   }
 
-  public async getAll (params: SearchParams | null): Promise<Number[]> {
+  public async getAll (params?: SearchParams): Promise<Number[]> {
     const { page = 1, rows = 100 } = params || {}
-    
+
     try {
       const response = await this._api.get(`?page=${page}&rows=${rows}`);
 
