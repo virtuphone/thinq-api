@@ -24,7 +24,7 @@ export class Number {
   
     public static fromJson(number: any): Number {
       return new Number({
-        id: number.id,
+        id: number.id.toString(),
         didSummary: number.didSummary,
         focDate: number.focDate ?? number.foc_date,
         ported: number.ported || false,
